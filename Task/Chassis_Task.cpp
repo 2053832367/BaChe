@@ -15,6 +15,8 @@ float TOP_dir=1;
 int16_t TT,TT1,TT2,TT3;
 float turn999;
 
+float top_speedww=0.5;
+uint8_t FLAG_topChange =0;
 
 void Chassis_Task(void *argument)
 {
@@ -198,7 +200,7 @@ void Chassis_Ctrl::Feedback_Update(void)
 // 底盘行为状态设置
 void Chassis_Ctrl::Behaviour_Mode(void)
 {
-	if(switch_is_up(RC_Ptr->rc.s[CHANNEL_RIGHT]))
+	if(switch_is_up(RC_Ptr->rc.s[CHANNEL_RIGHT]) && switch_is_mid(RC_Ptr->rc.s[CHANNEL_LEFT]))
 		Flags.RC_Flag = false;
 	else
 		Flags.RC_Flag = true;
@@ -294,7 +296,7 @@ void Chassis_Ctrl::Behaviour_Mode(void)
 //		 TOP_dir=1;
 //		//Mode = CHASSIS_NO_MOVE;
 //	}
-	else if(switch_is_mid(RC_Ptr->rc.s[CHANNEL_RIGHT]) && switch_is_mid(RC_Ptr->rc.s[CHANNEL_LEFT]))
+	else if(switch_is_mid(RC_Ptr->rc.s[CHANNEL_RIGHT]) && switch_is_mid(RC_Ptr->rc.s[CHANNEL_LEFT]))//右中左中，常规小陀螺移动
 	{
 	//Mode = CHASSIS_FOLLOW_YAW;
 		
@@ -315,27 +317,63 @@ void Chassis_Ctrl::Behaviour_Mode(void)
 		Mode=CHASSIS_LITTLE_TOP;
 		TOP_dir=1;
 		
-		
+		{
 		//Mode = CHASSIS_FOLLOW_YAW;
 		
 		//Mode=CHASSIS_NO_FOLLOW_YAW;
 		 
 		//Mode = CHASSIS_NO_MOVE;
+		}
 	}
-	
-	if(switch_is_up(RC_Ptr->rc.s[CHANNEL_RIGHT]) && switch_is_mid(RC_Ptr->rc.s[CHANNEL_LEFT]))
+	if(switch_is_up(RC_Ptr->rc.s[CHANNEL_RIGHT]) && switch_is_down(RC_Ptr->rc.s[CHANNEL_LEFT]))//右上左下，使用调速后的值，可转动云台
 	{
-		//Mode = CHASSIS_FOLLOW_YAW;
-		Mode=CHASSIS_LITTLE_TOP;
-		 TOP_dir=-1;
-	
+		Mode = CHASSIS_LITTLE_TOP_HIGH_FOLLOW;//设定值为TOP+HIGH切换时的值,跟随云台移动
+
+		TOP_dir = 1;
+
 	}
-		
-	if(switch_is_mid(RC_Ptr->rc.s[CHANNEL_RIGHT]) && switch_is_up(RC_Ptr->rc.s[CHANNEL_LEFT]))
+	if(switch_is_up(RC_Ptr->rc.s[CHANNEL_RIGHT]) && switch_is_mid(RC_Ptr->rc.s[CHANNEL_LEFT]))//右上左中，可调速，不可转动云台
+{
+		if(RC_Ptr->rc.ch[1] > 600) FLAG_topChange =1;
+	if ( FLAG_topChange ==1 && RC_Ptr->rc.ch[1] == 0)
 	{
-		Mode = CHASSIS_NAV;
-		//Mode = CHASSIS_NO_MOVE;
+		FLAG_topChange =0;
+		top_speedww +=0.01;
 	}
+	if (RC_Ptr->rc.ch[1] < -600) FLAG_topChange =2;
+	{
+		/* code */
+	}
+	if ( FLAG_topChange ==2 && RC_Ptr->rc.ch[1] == 0)
+	{
+		FLAG_topChange =0;
+		top_speedww -=0.01;
+	}
+	if (top_speedww >0.9) top_speedww =0.9;
+	if (top_speedww < 0.3) top_speedww =0.3;
+
+
+	Mode=CHASSIS_LITTLE_TOP_HIGH;
+	TOP_dir=1;
+}
+
+
+/*10_26靶车关闭*/
+	// if(switch_is_up(RC_Ptr->rc.s[CHANNEL_RIGHT]) && switch_is_mid(RC_Ptr->rc.s[CHANNEL_LEFT]))
+	// {
+	// 	//Mode = CHASSIS_FOLLOW_YAW;
+	// 	Mode=CHASSIS_LITTLE_TOP;
+	// 	 TOP_dir=-1;
+	
+	// }
+/*10_26靶车关闭*/
+/*10_26靶车关闭*/
+	// if(switch_is_mid(RC_Ptr->rc.s[CHANNEL_RIGHT]) && switch_is_up(RC_Ptr->rc.s[CHANNEL_LEFT]))
+	// {
+	// 	Mode = CHASSIS_NAV;
+	// 	//Mode = CHASSIS_NO_MOVE;
+	// }
+/*10_26靶车关闭*/
 #elif RC_CONTRAL_MODE == 1
 	if(switch_is_mid(RC_Ptr->rc.s[CHANNEL_RIGHT]) && switch_is_down(RC_Ptr->rc.s[CHANNEL_LEFT]))
 	{
@@ -515,6 +553,7 @@ void Chassis_Ctrl::RC_to_Control(fp32 *vx_set, fp32 *vy_set)
 	*vx_set = vx_set_channel;
 	*vy_set = vy_set_channel;
 }	
+
 float turn_kp=0.5;//小陀螺时转速权重比
 float Top_power_xy=0.1,ZC_power_xy=0.04;//0.67;
 void Chassis_Ctrl::Behaviour_Control(fp32 *vx_set, fp32 *vy_set, fp32 *angle_set)
@@ -555,6 +594,33 @@ void Chassis_Ctrl::Behaviour_Control(fp32 *vx_set, fp32 *vy_set, fp32 *angle_set
 //		 }
 //	*angle_set = Velocity.Speed_Set*cos(Little_top_speed*PI/180);
 	  *angle_set = ZC_power_xy*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*TOP_dir;//*cos(Little_top_speed*PI/180);
+	  		  /*可推荐定速为0.93，电机的第一个临界状态,剩余的性能用来走路*/
+		  *angle_set = 0.5;
+		turn999=*angle_set;
+	}
+	else if (Mode == CHASSIS_LITTLE_TOP_HIGH)//小陀螺高功率模式
+	{
+		//Flags.Speed_Up_Flag=true;
+		Little_top_speed+=flag_a*flag_add;
+		if(Little_top_speed>=60)		  flag_add=-1;
+		if(Little_top_speed<=0)       flag_add=1;
+			
+		  *angle_set = ZC_power_xy*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*TOP_dir;//*cos(Little_top_speed*PI/180);
+		  /*可推荐定速为0.93，电机的第一个临界状态,剩余的性能用来走路*/
+		  *angle_set = top_speedww;
+		turn999=*angle_set;
+	}
+	else if (Mode == CHASSIS_LITTLE_TOP_HIGH_FOLLOW)//小陀螺高功率模式
+	{
+		RC_to_Control(vx_set, vy_set);
+		//Flags.Speed_Up_Flag=true;
+		Little_top_speed+=flag_a*flag_add;
+		if(Little_top_speed>=60)		  flag_add=-1;
+		if(Little_top_speed<=0)       flag_add=1;
+			
+		  *angle_set = ZC_power_xy*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*TOP_dir;//*cos(Little_top_speed*PI/180);
+		  /*可推荐定速为0.93，电机的第一个临界状态,剩余的性能用来走路*/
+		  *angle_set = top_speedww;
 		turn999=*angle_set;
 	}
 	else if(Mode == CHASSIS_NAV)
@@ -662,7 +728,8 @@ void Chassis_Ctrl::Control(void)
 			Velocity.wz_set = angle_set;
 		}
 	}
-	else if(Mode == CHASSIS_LITTLE_TOP)
+	else if(Mode == CHASSIS_LITTLE_TOP || Mode == CHASSIS_LITTLE_TOP_HIGH || Mode == CHASSIS_LITTLE_TOP_HIGH_FOLLOW)
+
 	{
 		
 		// 旋转控制底盘速度方向，保证前进方向是云台方向，有利于运动平稳

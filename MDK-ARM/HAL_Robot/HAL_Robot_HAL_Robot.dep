@@ -1412,8 +1412,8 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x67CD504C)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x67CD504C)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x67CD504C)
-F (..\Task\Chassis_Task.cpp)(0x68FBBE1F)(--cpp -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Task/Inc -I ../App/Inc -I ../Device/Inc -I ../Protocol/Inc -I ../Algorithm/Inc -I ../Middlewares/DSP/Include -I ../Middlewares/DSP -I ../Drivers/CMSIS/Include -I ../ModuleDrivers/Inc --gnu;-diag_suppress=2903,1,1035;--cpp11;-diag_suppress=3337-I.\RTE\_HAL_Robot-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32H723xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32H723xx -DARM_MATH_CM7 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DUSE_PWR_LDO_SUPPLY-o hal_robot\chassis_task.o --omf_browse hal_robot\chassis_task.crf --depend hal_robot\chassis_task.d)
-I (../Task/Inc/Robot_Task.h)(0x6803A6EE)
+F (..\Task\Chassis_Task.cpp)(0x68FE2529)(--cpp -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Task/Inc -I ../App/Inc -I ../Device/Inc -I ../Protocol/Inc -I ../Algorithm/Inc -I ../Middlewares/DSP/Include -I ../Middlewares/DSP -I ../Drivers/CMSIS/Include -I ../ModuleDrivers/Inc --gnu;-diag_suppress=2903,1,1035;--cpp11;-diag_suppress=3337-I.\RTE\_HAL_Robot-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32H723xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32H723xx -DARM_MATH_CM7 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DUSE_PWR_LDO_SUPPLY-o hal_robot\chassis_task.o --omf_browse hal_robot\chassis_task.crf --depend hal_robot\chassis_task.d)
+I (../Task/Inc/Robot_Task.h)(0x68FE1A52)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h)(0x67CD504C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x588B8344)
@@ -1595,7 +1595,7 @@ I (../Protocol/Inc/protocol_crc.h)(0x64CF5900)
 I (../Algorithm/Inc/algorithm_kalman.h)(0x65A2A0C8)
 I (../Middlewares/DSP/Include/arm_math.h)(0x663F5730)
 I (../Algorithm/Inc/algorithm_SolveTrajectory.h)(0x671486FE)
-I (../Task/Inc/Robot_Task.h)(0x6803A6EE)
+I (../Task/Inc/Robot_Task.h)(0x68FE1A52)
 I (../Task/Inc/Guard_Task.h)(0x65F98E4E)
 I (../Algorithm/Inc/algorithm_pid.h)(0x65A37E56)
 I (../Algorithm/Inc/algorithm_user_lib.h)(0x661CFFCE)
@@ -1629,8 +1629,8 @@ I (C:\Keil_v5\ARM\ARMCC\include\rw\_algobase.h)(0x564D4E5E)
 I (C:\Keil_v5\ARM\ARMCC\include\rw\_iterator.h)(0x564D4E5E)
 I (C:\Keil_v5\ARM\ARMCC\include\rw\_dispatch.h)(0x564D4E5E)
 I (C:\Keil_v5\ARM\ARMCC\include\rw\_error.h)(0x564D4E5E)
-F (..\Task\Gimbal_Task.cpp)(0x68FE0FC4)(--cpp -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Task/Inc -I ../App/Inc -I ../Device/Inc -I ../Protocol/Inc -I ../Algorithm/Inc -I ../Middlewares/DSP/Include -I ../Middlewares/DSP -I ../Drivers/CMSIS/Include -I ../ModuleDrivers/Inc --gnu;-diag_suppress=2903,1,1035;--cpp11;-diag_suppress=3337-I.\RTE\_HAL_Robot-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32H723xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32H723xx -DARM_MATH_CM7 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DUSE_PWR_LDO_SUPPLY-o hal_robot\gimbal_task.o --omf_browse hal_robot\gimbal_task.crf --depend hal_robot\gimbal_task.d)
-I (../Task/Inc/Robot_Task.h)(0x6803A6EE)
+F (..\Task\Gimbal_Task.cpp)(0x68FE23C6)(--cpp -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Task/Inc -I ../App/Inc -I ../Device/Inc -I ../Protocol/Inc -I ../Algorithm/Inc -I ../Middlewares/DSP/Include -I ../Middlewares/DSP -I ../Drivers/CMSIS/Include -I ../ModuleDrivers/Inc --gnu;-diag_suppress=2903,1,1035;--cpp11;-diag_suppress=3337-I.\RTE\_HAL_Robot-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32H723xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32H723xx -DARM_MATH_CM7 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DUSE_PWR_LDO_SUPPLY-o hal_robot\gimbal_task.o --omf_browse hal_robot\gimbal_task.crf --depend hal_robot\gimbal_task.d)
+I (../Task/Inc/Robot_Task.h)(0x68FE1A52)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h)(0x67CD504C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x588B8344)
@@ -1866,7 +1866,7 @@ I (../ModuleDrivers/Inc/drivers_statistic.h)(0x6638CF62)
 I (C:\Keil_v5\ARM\ARMCC\include\cmath)(0x588B8344)
 I (../App/Inc/app_motor.h)(0x68FBB8AA)
 I (../Task/Inc/tasks.h)(0x66E1B760)
-I (../Task/Inc/Robot_Task.h)(0x6803A6EE)
+I (../Task/Inc/Robot_Task.h)(0x68FE1A52)
 I (../Task/Inc/Guard_Task.h)(0x65F98E4E)
 I (../Algorithm/Inc/algorithm_pid.h)(0x65A37E56)
 I (../Algorithm/Inc/algorithm_user_lib.h)(0x661CFFCE)
@@ -1915,7 +1915,7 @@ I (../ModuleDrivers/Inc/drivers_statistic.h)(0x6638CF62)
 I (C:\Keil_v5\ARM\ARMCC\include\cmath)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
 I (../Task/Inc/tasks.h)(0x66E1B760)
-I (../Task/Inc/Robot_Task.h)(0x6803A6EE)
+I (../Task/Inc/Robot_Task.h)(0x68FE1A52)
 I (../App/Inc/app_motor.h)(0x68FBB8AA)
 I (../Device/Inc/dev_system.h)(0x65FC57E6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
@@ -2562,7 +2562,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588B8344)
 I (../Protocol/Inc/protocol_judgement.h)(0x6817A63A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Task/Inc/tasks.h)(0x66E1B760)
-I (../Task/Inc/Robot_Task.h)(0x6803A6EE)
+I (../Task/Inc/Robot_Task.h)(0x68FE1A52)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x67CD504C)
 I (../Core/Inc/FreeRTOSConfig.h)(0x65E32FAE)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x67CD504C)
@@ -2661,7 +2661,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (../App/Inc/app_preference.h)(0x68FBB894)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
-I (../Task/Inc/Robot_Task.h)(0x6803A6EE)
+I (../Task/Inc/Robot_Task.h)(0x68FE1A52)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x67CD504C)
 I (../Core/Inc/FreeRTOSConfig.h)(0x65E32FAE)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x67CD504C)
@@ -2748,7 +2748,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (../App/Inc/app_preference.h)(0x68FBB894)
-F (..\Algorithm\chassis_power_control.cpp)(0x67AE1696)(--cpp -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Task/Inc -I ../App/Inc -I ../Device/Inc -I ../Protocol/Inc -I ../Algorithm/Inc -I ../Middlewares/DSP/Include -I ../Middlewares/DSP -I ../Drivers/CMSIS/Include -I ../ModuleDrivers/Inc --gnu;-diag_suppress=2903,1,1035;--cpp11;-diag_suppress=3337-I.\RTE\_HAL_Robot-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32H723xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32H723xx -DARM_MATH_CM7 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DUSE_PWR_LDO_SUPPLY-o hal_robot\chassis_power_control.o --omf_browse hal_robot\chassis_power_control.crf --depend hal_robot\chassis_power_control.d)
+F (..\Algorithm\chassis_power_control.cpp)(0x68FE169F)(--cpp -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Task/Inc -I ../App/Inc -I ../Device/Inc -I ../Protocol/Inc -I ../Algorithm/Inc -I ../Middlewares/DSP/Include -I ../Middlewares/DSP -I ../Drivers/CMSIS/Include -I ../ModuleDrivers/Inc --gnu;-diag_suppress=2903,1,1035;--cpp11;-diag_suppress=3337-I.\RTE\_HAL_Robot-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="542" -DSTM32H723xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32H723xx -DARM_MATH_CM7 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DUSE_PWR_LDO_SUPPLY-o hal_robot\chassis_power_control.o --omf_browse hal_robot\chassis_power_control.crf --depend hal_robot\chassis_power_control.d)
 I (../Algorithm/Inc/chassis_power_control.h)(0x67AE1550)
 I (../Middlewares/DSP/Include/arm_math.h)(0x663F5730)
 I (../Drivers/CMSIS/Include/core_cm7.h)(0x67CD5050)
@@ -2766,7 +2766,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (../App/Inc/app_preference.h)(0x68FBB894)
 I (../Task/Inc/tasks.h)(0x66E1B760)
-I (../Task/Inc/Robot_Task.h)(0x6803A6EE)
+I (../Task/Inc/Robot_Task.h)(0x68FE1A52)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x67CD504C)
 I (../Core/Inc/FreeRTOSConfig.h)(0x65E32FAE)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x67CD504C)

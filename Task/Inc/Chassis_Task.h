@@ -118,6 +118,8 @@ typedef enum
 	CHASSIS_NO_FOLLOW_YAW,//不跟随云台
 	CHASSIS_LITTLE_TOP,//小陀螺
 	CHASSIS_VISION,
+	CHASSIS_LITTLE_TOP_HIGH,//小陀螺高功率模式,又可调速度模式
+	CHASSIS_LITTLE_TOP_HIGH_FOLLOW,//设定值为TOP+HIGH切换时的值,跟随云台移动
 } chassis_mode_e;//底盘工作状态
 
 typedef enum

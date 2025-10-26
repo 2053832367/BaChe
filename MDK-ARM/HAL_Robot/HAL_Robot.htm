@@ -3,7 +3,7 @@
 <title>Static Call Graph - [HAL_Robot\HAL_Robot.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image HAL_Robot\HAL_Robot.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Sun Oct 26 20:10:51 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Sun Oct 26 21:42:12 2025
 <BR><P>
 <H3>Maximum Stack Usage =        288 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -2937,7 +2937,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gimbal_Ctrl::Behaviour_Control(float*, float*)
 </UL>
 
-<P><STRONG><a name="[134]"></a>Gimbal_Ctrl::Behaviour_Mode()</STRONG> (Thumb, 532 bytes, Stack size 8 bytes, gimbal_task.o(i._ZN11Gimbal_Ctrl14Behaviour_ModeEv))
+<P><STRONG><a name="[134]"></a>Gimbal_Ctrl::Behaviour_Mode()</STRONG> (Thumb, 540 bytes, Stack size 8 bytes, gimbal_task.o(i._ZN11Gimbal_Ctrl14Behaviour_ModeEv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = Gimbal_Ctrl::Behaviour_Mode() &rArr; CAN_Ctrl::DM_Motor_Enable(DM_Motor_CAN_Ctrl*) &rArr; CAN_Ctrl::SendData(FDCAN_HandleTypeDef*, unsigned short, unsigned char) &rArr; CAN_Ctrl::SendData(FDCAN_HandleTypeDef*, unsigned, const void*, unsigned char) &rArr; CAN_Ctrl::SendData(CANctrl*, unsigned, const void*, unsigned char) &rArr; CANctrl::SendData(const void*, unsigned char) &rArr; HAL_FDCAN_AddMessageToTxFifoQ &rArr; FDCAN_CopyMessageToRAM
 </UL>
 <BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
@@ -3103,7 +3103,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[219]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Ctrl::Behaviour_Control(float*, float*, float*)
 </UL>
 
-<P><STRONG><a name="[119]"></a>Chassis_Ctrl::Behaviour_Mode()</STRONG> (Thumb, 516 bytes, Stack size 8 bytes, chassis_task.o(i._ZN12Chassis_Ctrl14Behaviour_ModeEv))
+<P><STRONG><a name="[119]"></a>Chassis_Ctrl::Behaviour_Mode()</STRONG> (Thumb, 726 bytes, Stack size 8 bytes, chassis_task.o(i._ZN12Chassis_Ctrl14Behaviour_ModeEv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = Chassis_Ctrl::Behaviour_Mode() &rArr; rc_key_c::read_key(count_num_key*, key_count_e, bool)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rc_key_c::read_key(count_num_key*, key_count_e, bool)
@@ -3124,7 +3124,7 @@ Global Symbols
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Ctrl::Chassis_Init()
 </UL>
 
-<P><STRONG><a name="[219]"></a>Chassis_Ctrl::Behaviour_Control(float*, float*, float*)</STRONG> (Thumb, 600 bytes, Stack size 32 bytes, chassis_task.o(i._ZN12Chassis_Ctrl17Behaviour_ControlEPfS0_S0_))
+<P><STRONG><a name="[219]"></a>Chassis_Ctrl::Behaviour_Control(float*, float*, float*)</STRONG> (Thumb, 914 bytes, Stack size 32 bytes, chassis_task.o(i._ZN12Chassis_Ctrl17Behaviour_ControlEPfS0_S0_))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Chassis_Ctrl::Behaviour_Control(float*, float*, float*) &rArr; Chassis_Ctrl::RC_to_Control(float*, float*) &rArr; std::sqrt(float) &rArr; __hardfp_sqrtf &rArr; __set_errno
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;std::sqrt(float)
@@ -3151,7 +3151,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Ctrl::Behaviour_Mode()
 </UL>
 
-<P><STRONG><a name="[11d]"></a>Chassis_Ctrl::Control()</STRONG> (Thumb, 584 bytes, Stack size 32 bytes, chassis_task.o(i._ZN12Chassis_Ctrl7ControlEv))
+<P><STRONG><a name="[11d]"></a>Chassis_Ctrl::Control()</STRONG> (Thumb, 600 bytes, Stack size 32 bytes, chassis_task.o(i._ZN12Chassis_Ctrl7ControlEv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = Chassis_Ctrl::Control() &rArr; Chassis_Ctrl::Behaviour_Control(float*, float*, float*) &rArr; Chassis_Ctrl::RC_to_Control(float*, float*) &rArr; std::sqrt(float) &rArr; __hardfp_sqrtf &rArr; __set_errno
 </UL>
 <BR>[Calls]<UL><LI><a href="#[217]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_sin_f32
@@ -3713,10 +3713,10 @@ Global Symbols
 <P><STRONG><a name="[1f9]"></a>__hardfp_cosf</STRONG> (Thumb, 276 bytes, Stack size 8 bytes, cosf.o(i.__hardfp_cosf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = __hardfp_cosf &rArr; __mathlib_rredf2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[247]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_infnan
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
+<BR>[Calls]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 <LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
 <LI><a href="#[246]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_invalid
+<LI><a href="#[247]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_infnan
 </UL>
 <BR>[Called By]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gimbal_Ctrl::Control_loop()
 </UL>

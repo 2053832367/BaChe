@@ -282,10 +282,22 @@ void Gimbal_Ctrl::Behaviour_Mode(void)
 //		osDelay(1);
 //	}
 //	
-	if(switch_is_up(RC_Ptr->rc.s[CHANNEL_RIGHT]))
+/*作为靶车的时候，不对按键处理，关闭按键*/
+/*10月26日*/
+/*	if(switch_is_up(RC_Ptr->rc.s[CHANNEL_RIGHT]))
 	{
 		Flags.RC_Flag = false;//
 		
+	}
+	else
+	{
+		Flags.RC_Flag = true;
+	}
+*/
+//引入部分逻辑
+if(switch_is_up(RC_Ptr->rc.s[CHANNEL_RIGHT])&&switch_is_mid(RC_Ptr->rc.s[CHANNEL_LEFT]))
+	{
+		Flags.RC_Flag = false;//
 	}
 	else
 	{
