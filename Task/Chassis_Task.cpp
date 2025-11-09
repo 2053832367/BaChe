@@ -356,6 +356,10 @@ void Chassis_Ctrl::Behaviour_Mode(void)
 	Mode=CHASSIS_LITTLE_TOP_HIGH;
 	TOP_dir=1;
 }
+	if(switch_is_up(RC_Ptr->rc.s[CHANNEL_RIGHT]) && switch_is_up(RC_Ptr->rc.s[CHANNEL_LEFT]))//右上左中，可调速，不可转动云台
+{
+	Mode = CHASSIS_NO_MOVE;
+}
 
 
 /*10_26靶车关闭*/
