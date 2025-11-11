@@ -3,7 +3,7 @@
 <title>Static Call Graph - [HAL_Robot\HAL_Robot.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image HAL_Robot\HAL_Robot.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Sun Nov 09 16:36:32 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Nov 11 22:59:42 2025
 <BR><P>
 <H3>Maximum Stack Usage =        288 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -3124,7 +3124,7 @@ Global Symbols
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Ctrl::Chassis_Init()
 </UL>
 
-<P><STRONG><a name="[218]"></a>Chassis_Ctrl::Behaviour_Control(float*, float*, float*)</STRONG> (Thumb, 806 bytes, Stack size 32 bytes, chassis_task.o(i._ZN12Chassis_Ctrl17Behaviour_ControlEPfS0_S0_))
+<P><STRONG><a name="[218]"></a>Chassis_Ctrl::Behaviour_Control(float*, float*, float*)</STRONG> (Thumb, 844 bytes, Stack size 32 bytes, chassis_task.o(i._ZN12Chassis_Ctrl17Behaviour_ControlEPfS0_S0_))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Chassis_Ctrl::Behaviour_Control(float*, float*, float*) &rArr; Chassis_Ctrl::RC_to_Control(float*, float*) &rArr; std::sqrt(float) &rArr; __hardfp_sqrtf &rArr; __set_errno
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;std::sqrt(float)
@@ -3151,7 +3151,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Ctrl::Behaviour_Mode()
 </UL>
 
-<P><STRONG><a name="[11c]"></a>Chassis_Ctrl::Control()</STRONG> (Thumb, 600 bytes, Stack size 32 bytes, chassis_task.o(i._ZN12Chassis_Ctrl7ControlEv))
+<P><STRONG><a name="[11c]"></a>Chassis_Ctrl::Control()</STRONG> (Thumb, 608 bytes, Stack size 32 bytes, chassis_task.o(i._ZN12Chassis_Ctrl7ControlEv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = Chassis_Ctrl::Control() &rArr; Chassis_Ctrl::Behaviour_Control(float*, float*, float*) &rArr; Chassis_Ctrl::RC_to_Control(float*, float*) &rArr; std::sqrt(float) &rArr; __hardfp_sqrtf &rArr; __set_errno
 </UL>
 <BR>[Calls]<UL><LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_sin_f32

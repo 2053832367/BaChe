@@ -330,7 +330,7 @@
 #define DM_YAW_POSITION_PID_MAX_IOUT 3.0f
 #define DM_YAW_POSITION_PID_BAND_I 2.0f
 //yaw 速度环 PID参数以及 PID最大输出，积分输出 视觉(pid)
-#define DM_YAW_SPEED_PID_KP 0.2f//45.0f//100.0f//15.0f//4.0f//13.0f/9月13日改为0.13f,在此之前为0.5f
+#define DM_YAW_SPEED_PID_KP 0.12f//45.0f//100.0f//15.0f//4.0f//13.0f/9月13日改为0.13f,在此之前为0.5f
 #define DM_YAW_SPEED_PID_KI 0//0.003f//0.1f//0.1f//0.001f//0.18f/9月13日改为0.001在此之前为0
 #define DM_YAW_SPEED_PID_KD 0.0f//0.0f//0.0f//0.0f
 #define DM_YAW_SPEED_PID_MAX_OUT 3.0f//9月13日修改为0.60f,在此之前为10.0f

@@ -21,6 +21,7 @@ uint8_t FLAG_topChange =0;
 void Chassis_Task(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
+
 	Chassis.Chassis_Init();
   /* Infinite loop */
   for(;;)
@@ -527,9 +528,11 @@ void Chassis_Ctrl::RC_to_Control(fp32 *vx_set, fp32 *vy_set)
 			vx_set_channel=0;
 		
 		if(RC_Ptr->rc.ch[CHASSIS_Y_CHANNEL]>2)
-			vy_set_channel=Power_Set_KP*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*RC_Ptr->rc.ch[CHASSIS_Y_CHANNEL]/660.0f;
+		//坐标系反转为左Y前X
+			vy_set_channel=-Power_Set_KP*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*RC_Ptr->rc.ch[CHASSIS_Y_CHANNEL]/660.0f;
 		else if(RC_Ptr->rc.ch[CHASSIS_Y_CHANNEL]<-2)
-			vy_set_channel=-Power_Set_KP*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*fabs(RC_Ptr->rc.ch[CHASSIS_Y_CHANNEL]/660.0f);
+		//坐标系反转为左Y前X
+			vy_set_channel=Power_Set_KP*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*fabs(RC_Ptr->rc.ch[CHASSIS_Y_CHANNEL]/660.0f);
 		else
 			vy_set_channel=0;
 	}
@@ -558,7 +561,8 @@ void Chassis_Ctrl::RC_to_Control(fp32 *vx_set, fp32 *vy_set)
 	*vy_set = vy_set_channel;
 }	
 
-float Top_power_xy=0.1,ZC_power_xy=0.04;//0.67;
+float Top_power_xy=0.1;
+float ZC_power_xy=0.4;//0.67;
 void Chassis_Ctrl::Behaviour_Control(fp32 *vx_set, fp32 *vy_set, fp32 *angle_set)
 {
 	fp32 vw_set;
@@ -596,9 +600,11 @@ void Chassis_Ctrl::Behaviour_Control(fp32 *vx_set, fp32 *vy_set, fp32 *angle_set
 //			 TOP_dir=-TOP_dir;
 //		 }
 //	*angle_set = Velocity.Speed_Set*cos(Little_top_speed*PI/180);
-	//   *angle_set = ZC_power_xy*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*TOP_dir;//*cos(Little_top_speed*PI/180);
+		
+	  *angle_set = Top_power_xy * ZC_power_xy*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*TOP_dir;//*cos(Little_top_speed*PI/180);
+
 	  		  /*可推荐定速为0.93，电机的第一个临界状态,剩余的性能用来走路*/
-		  *angle_set = 0.5;
+		//   *angle_set = 0.5;
 		turn999=*angle_set;
 	}
 	else if (Mode == CHASSIS_LITTLE_TOP_HIGH)//小陀螺高功率模式
@@ -720,8 +726,8 @@ void Chassis_Ctrl::Control(void)
 
 		if(1) // 底盘前进方向为云台正方向
 		{
-			Velocity.vx_set = cos_yaw * vx_set - sin_yaw * vy_set;
-			Velocity.vy_set = sin_yaw * vx_set + cos_yaw * vy_set;
+			Velocity.vx_set = cos_yaw * vx_set + sin_yaw * vy_set;//坐标轴反转了，原来是 + -
+			Velocity.vy_set = -sin_yaw * vx_set + cos_yaw * vy_set;//这里的坐标轴反转了，原来是 + +
 			Velocity.wz_set = angle_set;
 		}
 		else // 底盘前进方向为底盘正方向
@@ -738,8 +744,8 @@ void Chassis_Ctrl::Control(void)
 		// 旋转控制底盘速度方向，保证前进方向是云台方向，有利于运动平稳
 		sin_yaw = arm_sin_f32(-chassis_relative_RAD);
 		cos_yaw = arm_cos_f32(-chassis_relative_RAD);
-		Velocity.vx_set = cos_yaw * vx_set - sin_yaw * vy_set;
-		Velocity.vy_set = sin_yaw * vx_set + cos_yaw * vy_set;
+		Velocity.vx_set = cos_yaw * vx_set + sin_yaw * vy_set;//坐标轴反转了，原来是 + -
+		Velocity.vy_set = -sin_yaw * vx_set + cos_yaw * vy_set;//这里的坐标轴反转了，原来是 + +
 
 		//Velocity.wz_set = angle_set*flag_W ;
 		Velocity.wz_set = angle_set;
@@ -808,10 +814,10 @@ void Chassis_Ctrl::Vector_to_Wheel_Speed(fp32 *vx_set, fp32 *vy_set, fp32 *wz_se
 
 	
 	#ifdef useOmni
-	Motor[0].speed_set =  8.9507f*vx_temp + 8.9507f*vy_temp - 3.9025f * wz_temp;
-	Motor[1].speed_set = -8.9507f*vx_temp + 8.9507f*vy_temp - 3.9025f * wz_temp;
-	Motor[2].speed_set = -8.9507f*vx_temp - 8.9507f*vy_temp - 3.9025f * wz_temp;
-	Motor[3].speed_set =  8.9507f*vx_temp - 8.9507f*vy_temp - 3.9025f * wz_temp;	
+	Motor[0].speed_set =  8.9507f*vx_temp - 8.9507f*vy_temp + 3.9025f * wz_temp;
+	Motor[1].speed_set = -8.9507f*vx_temp - 8.9507f*vy_temp + 3.9025f * wz_temp;
+	Motor[2].speed_set = -8.9507f*vx_temp + 8.9507f*vy_temp + 3.9025f * wz_temp;
+	Motor[3].speed_set =  8.9507f*vx_temp + 8.9507f*vy_temp + 3.9025f * wz_temp;	
 #endif	
 #ifdef useMecanum
 	// 旋转的时候， 由于云台靠前，所以是前面两轮 0 ，1 旋转的速度变慢， 后面两轮 2,3 旋转的速度变快
