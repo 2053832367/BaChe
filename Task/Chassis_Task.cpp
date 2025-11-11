@@ -29,7 +29,7 @@ void Chassis_Task(void *argument)
 		Chassis.Feedback_Update();
 		if(Chassis.Mode == CHASSIS_NO_MOVE)
 		{
-			CAN_Cmd.DM_MIT_SendData(&CAN_Cmd.Gimbal_DM_Yaw,0,0,0,0,0);
+			// CAN_Cmd.DM_MIT_SendData(&CAN_Cmd.Gimbal_DM_Yaw,0,0,0,0,0);
 			CAN_Cmd.SendData(&CAN_Cmd.Chassis, 0, 0, 0, 0);
 #ifdef useSteering
 			//CAN_Cmd.SendData(&CAN_Cmd.Steer, 0, 0, 0, 0);
@@ -41,7 +41,7 @@ void Chassis_Task(void *argument)
 			Chassis.Control_loop();
 			
 			CAN_Cmd.SendData(&CAN_Cmd.Chassis, Chassis.Motor[0].give_current, Chassis.Motor[1].give_current, Chassis.Motor[2].give_current, Chassis.Motor[3].give_current);
-			CAN_Cmd.DM_MIT_SendData(&CAN_Cmd.Gimbal_DM_Yaw,0,0,0,0,Gimbal.DM_Yaw.tor_set);
+			// CAN_Cmd.DM_MIT_SendData(&CAN_Cmd.Gimbal_DM_Yaw,0,0,0,0,Gimbal.DM_Yaw.tor_set);
 #ifdef useSteering
 			CAN_Cmd.SendData(&CAN_Cmd.Steer, Chassis.Steering[0].give_current, Chassis.Steering[1].give_current,
 			Chassis.Steering[2].give_current, Chassis.Steering[3].give_current);
@@ -108,7 +108,7 @@ void Chassis_Ctrl::Chassis_Init(void)
 	PID.Init(&Power_buffer_Pid, POSITION, POWER_BUFFER_PID_KP, POWER_BUFFER_PID_KI, POWER_BUFFER_PID_KD, POWER_BUFFER_PID_MAX_OUT, POWER_BUFFER_PID_MAX_IOUT, POWER_BUFFER_PID_BAND_I);
 	
 	/*功率环的P权重*/
-	Power_Set_KP=0.03;
+	Power_Set_KP=0.02;//影响走路速度
 	
 	for(uint8_t i = 0; i < 4; i++)
 	{
@@ -338,7 +338,7 @@ void Chassis_Ctrl::Behaviour_Mode(void)
 	if ( FLAG_topChange ==1 && RC_Ptr->rc.ch[1] == 0)
 	{
 		FLAG_topChange =0;
-		top_speedww +=0.01;
+		top_speedww +=0.04;
 	}
 	if (RC_Ptr->rc.ch[1] < -600) FLAG_topChange =2;
 	{
@@ -347,7 +347,7 @@ void Chassis_Ctrl::Behaviour_Mode(void)
 	if ( FLAG_topChange ==2 && RC_Ptr->rc.ch[1] == 0)
 	{
 		FLAG_topChange =0;
-		top_speedww -=0.01;
+		top_speedww -=0.04;
 	}
 	if (top_speedww >0.9) top_speedww =0.9;
 	if (top_speedww < 0.3) top_speedww =0.3;
@@ -558,7 +558,6 @@ void Chassis_Ctrl::RC_to_Control(fp32 *vx_set, fp32 *vy_set)
 	*vy_set = vy_set_channel;
 }	
 
-float turn_kp=0.5;//小陀螺时转速权重比
 float Top_power_xy=0.1,ZC_power_xy=0.04;//0.67;
 void Chassis_Ctrl::Behaviour_Control(fp32 *vx_set, fp32 *vy_set, fp32 *angle_set)
 {
@@ -597,7 +596,7 @@ void Chassis_Ctrl::Behaviour_Control(fp32 *vx_set, fp32 *vy_set, fp32 *angle_set
 //			 TOP_dir=-TOP_dir;
 //		 }
 //	*angle_set = Velocity.Speed_Set*cos(Little_top_speed*PI/180);
-	  *angle_set = ZC_power_xy*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*TOP_dir;//*cos(Little_top_speed*PI/180);
+	//   *angle_set = ZC_power_xy*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*TOP_dir;//*cos(Little_top_speed*PI/180);
 	  		  /*可推荐定速为0.93，电机的第一个临界状态,剩余的性能用来走路*/
 		  *angle_set = 0.5;
 		turn999=*angle_set;
@@ -609,7 +608,7 @@ void Chassis_Ctrl::Behaviour_Control(fp32 *vx_set, fp32 *vy_set, fp32 *angle_set
 		if(Little_top_speed>=60)		  flag_add=-1;
 		if(Little_top_speed<=0)       flag_add=1;
 			
-		  *angle_set = ZC_power_xy*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*TOP_dir;//*cos(Little_top_speed*PI/180);
+		//   *angle_set = ZC_power_xy*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*TOP_dir;//*cos(Little_top_speed*PI/180);
 		  /*可推荐定速为0.93，电机的第一个临界状态,剩余的性能用来走路*/
 		  *angle_set = top_speedww;
 		turn999=*angle_set;
@@ -622,7 +621,7 @@ void Chassis_Ctrl::Behaviour_Control(fp32 *vx_set, fp32 *vy_set, fp32 *angle_set
 		if(Little_top_speed>=60)		  flag_add=-1;
 		if(Little_top_speed<=0)       flag_add=1;
 			
-		  *angle_set = ZC_power_xy*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*TOP_dir;//*cos(Little_top_speed*PI/180);
+		//   *angle_set = ZC_power_xy*sqrt(Power_Ctrl.Power_limit.Chassis_Max_power)*TOP_dir;//*cos(Little_top_speed*PI/180);
 		  /*可推荐定速为0.93，电机的第一个临界状态,剩余的性能用来走路*/
 		  *angle_set = top_speedww;
 		turn999=*angle_set;

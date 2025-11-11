@@ -1,5 +1,0 @@
---cpp -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Task/Inc -I ../App/Inc -I ../Device/Inc -I ../Protocol/Inc -I ../Algorithm/Inc -I ../Middlewares/DSP/Include -I ../Middlewares/DSP -I ../Drivers/CMSIS/Include -I ../ModuleDrivers/Inc --gnu;-diag_suppress=2903,1,1035;--cpp11;-diag_suppress=3337
--I.\RTE\_HAL_Robot
--IC:\Keil_v5\ARM\PACK\ARM\CMSIS\6.1.0\CMSIS\Core\Include
--D__UVISION_VERSION="542" -DSTM32H723xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32H723xx -DARM_MATH_CM7 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DUSE_PWR_LDO_SUPPLY
--o hal_robot\rtossystem_task.o --omf_browse hal_robot\rtossystem_task.crf --depend hal_robot\rtossystem_task.d "..\Task\RTOSsystem_task.cpp"

@@ -3,7 +3,7 @@
 #include "tasks.h"
 
 // float Power,Power1,powermax=90,k1=1.92e-07f;
-float Power,Power1,powermax=260,k1=1.92e-07f;//之前的最大功率为90
+float Power,Power1,powermax=100,k1=1.92e-07f;//之前的最大功率为90
 PowerClass::PowerClass()
 {
 	Power_K.K1=k1;

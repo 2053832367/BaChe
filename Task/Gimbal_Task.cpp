@@ -44,9 +44,9 @@ void Gimbal_Task(void *pvParameters)
 
 		if(Gimbal.Mode == GIMBAL_NO_MOVE)
 		{
-			//CAN_Cmd.SendData(&CAN_Cmd.Gimbal, 0, 0,0 ,0);			
+			CAN_Cmd.SendData(&CAN_Cmd.Gimbal, 0, 0,0 ,0);			
 			//CAN_Cmd.SendData(&CAN_Cmd.Fric, 0, 0);
-			
+			CAN_Cmd.DM_MIT_SendData(&CAN_Cmd.Gimbal_DM_Yaw,0,0,0,0,0);
 			
 			//CAN_Cmd.DM_MIT_SendData(&CAN_Cmd.Gimbal_DM_Pitch,0,0,0,0,-Gimbal.G_compensation_out);
 
@@ -58,12 +58,12 @@ void Gimbal_Task(void *pvParameters)
 		Gimbal.Control_loop();
 			
 			
-		//CAN_Cmd.SendData(&CAN_Cmd.Gimbal,0,0,Gimbal.Trigger.give_current,0);
-		CAN_Cmd.SendData(&CAN_Cmd.Fric, Gimbal.Fric1.give_current, Gimbal.Fric2.give_current);
+		CAN_Cmd.SendData(&CAN_Cmd.Gimbal,0,0,Gimbal.Trigger.give_current,0);
+		// CAN_Cmd.SendData(&CAN_Cmd.Fric, Gimbal.Fric1.give_current, Gimbal.Fric2.give_current);
 		   
 						
 		//CAN_Cmd.DM_MIT_SendData(&CAN_Cmd.Gimbal_DM_Pitch,0,0,0,0,-Gimbal.DM_Pitch.tor_set);
-		
+		CAN_Cmd.DM_MIT_SendData(&CAN_Cmd.Gimbal_DM_Yaw,0,0,0,0,Gimbal.DM_Yaw.tor_set);
 
 	
 

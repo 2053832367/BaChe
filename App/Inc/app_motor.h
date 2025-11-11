@@ -279,7 +279,7 @@ public:
 		#ifdef useInfantry
 		Fric(&hfdcan3, CAN_DJI_Motor_Group2_ID, 2),//ƒ¶≤¡¬÷*2+(4∫≈Õ”¬›“«”√canΩ” ‹)
 		#endif
-		Gimbal_DM_Yaw(&hfdcan2,DM_GimbalS_ID,DM_6220_P_MIN,DM_6220_P_MAX,DM_6220_V_MIN,DM_6220_V_MAX,DM_6220_T_MIN,DM_6220_T_MAX,DM_6220_KP_MIN,DM_6220_KP_MAX,DM_6220_KD_MIN,DM_6220_KD_MAX),
+		Gimbal_DM_Yaw(&hfdcan1,DM_GimbalS_ID,DM_6220_P_MIN,DM_6220_P_MAX,DM_6220_V_MIN,DM_6220_V_MAX,DM_6220_T_MIN,DM_6220_T_MAX,DM_6220_KP_MIN,DM_6220_KP_MAX,DM_6220_KD_MIN,DM_6220_KD_MAX),
 		Gimbal_DM_Pitch(&hfdcan1,DM_GimbalS_Pitch_ID,DM_4310_P_MIN,DM_4310_P_MAX,DM_4310_V_MIN,DM_4310_V_MAX,DM_4310_T_MIN,DM_4310_T_MAX,DM_4310_KP_MIN,DM_4310_KP_MAX,DM_4310_KD_MIN,DM_4310_KD_MAX)
 		#ifdef useSteering
 		,Steer(&hfdcan3, CAN_DJI_Motor_Group1_ID, 4)//∂Ê¬÷*4
