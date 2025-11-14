@@ -17,7 +17,7 @@ float turn999;
 
 float top_speedww=0.5;
 uint8_t FLAG_topChange =0;
-
+int16_t Motor_Iset[4] = {0,0,0,0};
 void Chassis_Task(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
@@ -38,10 +38,12 @@ void Chassis_Task(void *argument)
 		}
 		else
 		{
+			//¹¦ÂÊµ÷ÊÔ
 			Chassis.Control();
 			Chassis.Control_loop();
 			
 			CAN_Cmd.SendData(&CAN_Cmd.Chassis, Chassis.Motor[0].give_current, Chassis.Motor[1].give_current, Chassis.Motor[2].give_current, Chassis.Motor[3].give_current);
+//			CAN_Cmd.SendData(&CAN_Cmd.Chassis, Motor_Iset[0], Motor_Iset[1], Motor_Iset[2], Motor_Iset[3]);
 			// CAN_Cmd.DM_MIT_SendData(&CAN_Cmd.Gimbal_DM_Yaw,0,0,0,0,Gimbal.DM_Yaw.tor_set);
 #ifdef useSteering
 			CAN_Cmd.SendData(&CAN_Cmd.Steer, Chassis.Steering[0].give_current, Chassis.Steering[1].give_current,
