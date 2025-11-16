@@ -23,7 +23,6 @@ float lll;
 float current = 30;
 extern float TOP_dir;
 
-float Tiaoshi_Yaw_Speed =0;
 
 float angle_;
 float low_passing =0.1f;
@@ -903,10 +902,10 @@ void Gimbal_Ctrl::Control_loop(void)
 		
 		
 //调试部分
-		// PID.Calc(&DM_Yaw.PositinPid, DM_Yaw.angle, DM_Yaw.angle_set);
+
 		PID.Calc(&DM_Yaw.PositinPid, DM_Yaw.angle, DM_Yaw.angle_set);
 		PID.Calc(&DM_Yaw.SpeedPid,DM_Yaw.speed, DM_Yaw.PositinPid.out);
-		// PID.Calc(&DM_Yaw.SpeedPid,DM_Yaw.speed, Tiaoshi_Yaw_Speed);
+	
 
 
 		PID.Calc(&DM_Pitch.PositinPid, DM_Pitch.angle, DM_Pitch.angle_set);
@@ -977,7 +976,7 @@ void Gimbal_Ctrl::Control_loop(void)
 		PID.Calc(&DM_Yaw.SpeedPid,DM_Yaw.speed, DM_Yaw.PositinPid.out);//速度环
 
 		 PID.Calc(&DM_Pitch.PositinPid, DM_Pitch.angle, DM_Pitch.angle_set);
-		PID.Calc(&DM_Pitch.SpeedPid, DM_Pitch.speed,Tiaoshi_Yaw_Speed);
+		PID.Calc(&DM_Pitch.SpeedPid, DM_Pitch.speed,DM_Pitch.PositinPid.out);
 
 		
 		YAW_out =DM_Yaw.SpeedPid.out;//forwardfeed(DM_Yaw.SpeedPid.out);

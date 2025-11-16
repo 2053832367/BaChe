@@ -27,8 +27,9 @@ void Correspond_Task(void *argument)
   /* Infinite loop */
   for(;;)
   {		
-		set_bo[1] = Message.robo->shoot_data.launching_frequency;
-		//set_bo[2] = Gimbal.DM_Yaw.angle_set;
+		set_bo[1] = Gimbal.DM_Yaw.SpeedPid.ref;
+		
+		set_bo[2] = Gimbal.DM_Yaw.SpeedPid.set;
 		//set_bo[3] = Message.VisualR.yaw;
 		//set_bo[4] = Gimbal.DM_Yaw.VisualR_LuBo_yaw;
 		//set_bo[5] = Gimbal.DM_Yaw.speed;
