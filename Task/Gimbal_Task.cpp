@@ -24,7 +24,6 @@ float current = 30;
 extern float TOP_dir;
 
 
-float angle_;
 float low_passing =0.1f;
 
 
